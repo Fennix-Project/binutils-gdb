@@ -408,6 +408,11 @@ i[3-7]86-*-elf* | i[3-7]86-*-rtems* | i[3-7]86-*-genode*)
 i[3-7]86-*-dragonfly*)	targ_emul=elf_i386
 			targ_extra_emuls="elf_iamcu i386bsd"
 			;;
+i[3-7]86-*-fennix*)
+			targ_emul=elf_i386_fennix
+			targ_extra_emuls=elf_i386
+			targ64_extra_emuls="elf_x86_64_fennix elf_x86_64"
+			;;
 i[3-7]86-*-freebsd* | i[3-7]86-*-kfreebsd*-gnu)
 			targ_emul=elf_i386_fbsd
 			targ_extra_emuls="elf_i386 elf_iamcu i386bsd"
@@ -991,6 +996,10 @@ vax-*-linux-*)		targ_emul=elf32vax
 			;;
 visium-*-elf)		targ_emul=elf32visium
 			;;
+x86_64-*-fennix*)
+			targ_emul=elf_x86_64_fennix
+			targ_extra_emuls="elf_i386_fennix elf_x86_64 elf_i386"
+			;;
 x86_64-*-rdos*)		targ_emul=elf64rdos
 			;;
 x86_64-*-cloudabi*)	targ_emul=elf_x86_64_cloudabi
@@ -1098,6 +1107,10 @@ case "${target}" in
 
 *-*-freebsd*)
   NATIVE_LIB_DIRS='/lib /usr/lib /usr/local/lib'
+  ;;
+
+*-*-fennix*)
+  NATIVE_LIB_DIRS='/system/lib'
   ;;
 
 hppa*64*-*-hpux11*)
